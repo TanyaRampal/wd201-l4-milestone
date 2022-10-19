@@ -1,0 +1,12 @@
+{
+  "name": "l4-milestone",
+  "version": "1.0.0",
+  "description": "",
+  "main": "todo.js",
+  "scripts": {
+    "start": "node todo.js",
+    "test": "echo \"Error: no test specified\" && exit 1"
+  },
+  "author": "Tanya Rampal <tanya_r@ec.iitr.ac.in>",
+  "license": "ISC"
+}
