@@ -5,8 +5,11 @@
   "main": "todo.js",
   "scripts": {
     "start": "node todo.js",
-    "test": "echo \"Error: no test specified\" && exit 1"
+    "test": "jest"
   },
   "author": "Tanya Rampal <tanya_r@ec.iitr.ac.in>",
-  "license": "ISC"
+  "license": "ISC",
+  "devDependencies": {
+    "jest": "^29.2.1"
+  }
 }
