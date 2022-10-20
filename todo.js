@@ -1,6 +1,5 @@
-/* eslint-disable no-undef */
 const todoList = () => {
-  all = [];
+  let all = [];
   const add = (todoItem) => {
     all.push(todoItem);
   };
@@ -13,7 +12,7 @@ const todoList = () => {
   };
 
   const dueToday = () => {
-    return all.filter((todo) => todo.dueDate == today);
+    return all.filter((todo) => todo.dueDate === today);
   };
 
   const dueLater = () => {
@@ -26,7 +25,7 @@ const todoList = () => {
     list.forEach((todo) => {
       const status = todo.completed ? "[x]" : "[ ]";
       const date = todo.dueDate == today ? "" : todo.dueDate;
-      displayString.push(`${status} ${todo.title} ${date}`);
+      displayString.push(`${status} ${todo.title.trim()} ${date}`.trim());
     });
 
     return displayString.join("\n");
