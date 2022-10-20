@@ -44,7 +44,7 @@ describe("Todolist test suit", () => {
         dueDate: tomorrow,
       });
     }
-    // console.log(toDisplayableList(all));
+    console.log(all);
   });
 
   test("should add new todo", () => {
@@ -65,34 +65,52 @@ describe("Todolist test suit", () => {
 
   test("Should only return overdue items", () => {
     const itemsOverdue = overdue();
-    // console.log(itemsOverdue);
-    // expect(itemsOverdue.length).toBe(3);
-    let overdueFlag = true;
-    itemsOverdue.forEach((item) => {
-      if (!(item.dueDate < today)) overdueFlag = false;
+    add({
+      title: "test todo",
+      completed: false,
+      dueDate: yesterday,
     });
-    expect(overdueFlag).toBe(true);
+    const newItemsOverdue = overdue();
+    expect(newItemsOverdue.length).toBe(itemsOverdue.length + 1);
+
+    // let overdueFlag = true;
+    // itemsOverdue.forEach((item) => {
+    //   if (!(item.dueDate < today)) overdueFlag = false;
+    // });
+    // expect(overdueFlag).toBe(true);
   });
 
   test("Should only return items due today", () => {
     const itemsDueToday = dueToday();
-    // console.log(itemsDueToday);
-    // expect(itemsDueToday.length).toBe(2);
-    let dueTodayFlag = true;
-    itemsDueToday.forEach((item) => {
-      if (!(item.dueDate === today)) dueTodayFlag = false;
+    add({
+      title: "test todo",
+      completed: false,
+      dueDate: today,
     });
-    expect(dueTodayFlag).toBe(true);
+    const newItemsDueToday = dueToday();
+    expect(newItemsDueToday.length).toBe(itemsDueToday.length + 1);
+
+    // let dueTodayFlag = true;
+    // itemsDueToday.forEach((item) => {
+    //   if (!(item.dueDate === today)) dueTodayFlag = false;
+    // });
+    // expect(dueTodayFlag).toBe(true);
   });
 
   test("Should only return items due later", () => {
     const itemsDueLater = dueLater();
-    // console.log(itemsDueLater);
-    // expect(itemsDueLater.length).toBe(4);
-    let dueLaterFlag = true;
-    itemsDueLater.forEach((item) => {
-      if (!(item.dueDate > today)) dueLaterFlag = false;
+    add({
+      title: "test todo",
+      completed: false,
+      dueDate: tomorrow,
     });
-    expect(dueLaterFlag).toBe(true);
+    const newItemsDueLater = dueLater();
+    expect(newItemsDueLater.length).toBe(itemsDueLater.length + 1);
+
+    // let dueLaterFlag = true;
+    // itemsDueLater.forEach((item) => {
+    //   if (!(item.dueDate > today)) dueLaterFlag = false;
+    // });
+    // expect(dueLaterFlag).toBe(true);
   });
 });
