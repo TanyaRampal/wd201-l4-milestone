@@ -14,7 +14,7 @@ const todoList = () => {
   };
 
   const dueToday = () => {
-    return all.filter((todo) => todo.dueDate == today);
+    return all.filter((todo) => todo.dueDate === today);
   };
 
   const dueLater = () => {
@@ -22,24 +22,34 @@ const todoList = () => {
   };
 
   const toDisplayableList = (list) => {
-    let displayString = [];
-    list.forEach((todo) => {
-      const status = todo.completed ? "[x]" : "[ ]";
-      const date = todo.dueDate == today ? "" : todo.dueDate;
-      displayString.push(`${status} ${todo.title} ${date}`);
-    });
+    // let displayString = [];
+    // list.forEach((todo) => {
+    //   const status = todo.completed ? "[x]" : "[ ]";
+    //   const date = todo.dueDate == today ? "" : todo.dueDate;
+    //   displayString.push(`${status} ${todo.title.trim()} ${date}`);
+    // });
 
-    return displayString.join("\n");
+    // return displayString.join("\n");
+
+    return list
+      .map((todo) => {
+        const status = todo.completed ? "[x]" : "[ ]";
+        const date = todo.dueDate == today ? "" : todo.dueDate;
+        return `${status} ${todo.title.trim()} ${date}`;
+      })
+      .join("\n");
   };
 
   return {
     all,
+    today,
+    yesterday,
+    tomorrow,
     add,
     markAsComplete,
     overdue,
     dueToday,
     dueLater,
-    toDisplayableList,
   };
 };
 

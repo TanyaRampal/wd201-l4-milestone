@@ -19,7 +19,7 @@ describe("Todolist test suit", () => {
     let ctr = 1;
 
     // due today - 2 in number
-    for (var i = 0; i < 2; i++) {
+    for (let i = 0; i < 2; i++) {
       add({
         title: `test${ctr++} todo`,
         completed: false,
@@ -44,6 +44,7 @@ describe("Todolist test suit", () => {
         dueDate: tomorrow,
       });
     }
+    // console.log(toDisplayableList(all));
   });
 
   test("should add new todo", () => {
@@ -79,7 +80,7 @@ describe("Todolist test suit", () => {
     // expect(itemsDueToday.length).toBe(2);
     let dueTodayFlag = true;
     itemsDueToday.forEach((item) => {
-      if (!(item.dueDate == today)) dueTodayFlag = false;
+      if (!(item.dueDate === today)) dueTodayFlag = false;
     });
     expect(dueTodayFlag).toBe(true);
   });
