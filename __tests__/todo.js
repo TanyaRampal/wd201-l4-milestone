@@ -1,18 +1,20 @@
 /* eslint-disable no-undef */
 const todoList = require("../todo");
+const formattedDate = (d) => {
+  return d.toISOString().split("T")[0];
+};
+
+var dateToday = new Date();
+const today = formattedDate(dateToday);
+const yesterday = formattedDate(
+  new Date(new Date().setDate(dateToday.getDate() - 1))
+);
+const tomorrow = formattedDate(
+  new Date(new Date().setDate(dateToday.getDate() + 1))
+);
 
 // eslint-disable-next-line no-unused-vars
-const {
-  all,
-  today,
-  yesterday,
-  tomorrow,
-  add,
-  markAsComplete,
-  overdue,
-  dueToday,
-  dueLater,
-} = todoList();
+const { all, add, markAsComplete, overdue, dueToday, dueLater } = todoList();
 
 describe("Todolist test suit", () => {
   beforeAll(() => {
@@ -44,7 +46,7 @@ describe("Todolist test suit", () => {
         dueDate: tomorrow,
       });
     }
-    console.log(all);
+    // console.log(all);
   });
 
   test("should add new todo", () => {

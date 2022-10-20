@@ -1,4 +1,3 @@
-/* eslint-disable no-unused-vars */
 /* eslint-disable no-undef */
 const todoList = () => {
   all = [];
@@ -14,37 +13,27 @@ const todoList = () => {
   };
 
   const dueToday = () => {
-    return all.filter((todo) => todo.dueDate === today);
+    return all.filter((todo) => todo.dueDate == today);
   };
 
   const dueLater = () => {
     return all.filter((todo) => todo.dueDate > today);
   };
 
+  // eslint-disable-next-line no-unused-vars
   const toDisplayableList = (list) => {
-    // let displayString = [];
-    // list.forEach((todo) => {
-    //   const status = todo.completed ? "[x]" : "[ ]";
-    //   const date = todo.dueDate == today ? "" : todo.dueDate;
-    //   displayString.push(`${status} ${todo.title.trim()} ${date}`);
-    // });
+    let displayString = [];
+    list.forEach((todo) => {
+      const status = todo.completed ? "[x]" : "[ ]";
+      const date = todo.dueDate == today ? "" : todo.dueDate;
+      displayString.push(`${status} ${todo.title} ${date}`);
+    });
 
-    // return displayString.join("\n");
-
-    return list
-      .map((todo) => {
-        const status = todo.completed ? "[x]" : "[ ]";
-        const date = todo.dueDate == today ? "" : todo.dueDate;
-        return `${status} ${todo.title.trim()} ${date}`;
-      })
-      .join("\n");
+    return displayString.join("\n");
   };
 
   return {
     all,
-    today,
-    yesterday,
-    tomorrow,
     add,
     markAsComplete,
     overdue,
@@ -59,12 +48,12 @@ const formattedDate = (d) => {
 
 var dateToday = new Date();
 const today = formattedDate(dateToday);
-const yesterday = formattedDate(
-  new Date(new Date().setDate(dateToday.getDate() - 1))
-);
-const tomorrow = formattedDate(
-  new Date(new Date().setDate(dateToday.getDate() + 1))
-);
+// const yesterday = formattedDate(
+//   new Date(new Date().setDate(dateToday.getDate() - 1))
+// );
+// const tomorrow = formattedDate(
+//   new Date(new Date().setDate(dateToday.getDate() + 1))
+// );
 
 module.exports = todoList;
 
